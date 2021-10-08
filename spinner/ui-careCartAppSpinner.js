@@ -1,6 +1,8 @@
 //******* @author: CareCart App-Wheelify - Abdullah Butt **************************************************
 //****** Store Frontend JS - carecartSpinnerApp.js GH v.7.0.0 - Build ver 1.0.34 **************************
 //****** Updated at: 20-Sept-2021, 11:10 AM ***************************************************************
+//stores
+//1- purearts-montreal.myshopify.com
 
 (function () {
 	var d = new Date();
@@ -1056,6 +1058,16 @@
 
 							if (Shopify.shop == 'jumping-the-couch.myshopify.com') {
 								var thisStatus = checkStoreSpecificUrlCcSpinASale("https://jumpingthecouch.com/pages/spin-win");
+								//console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
+								if (thisStatus) {
+									console.log('SAS Custom Page Matched for store: ' + Shopify.shop);
+								} else {
+									console.log('SAS Custom Page NOT Matched for store: ' + Shopify.shop);
+									return;
+								}
+							}
+							if (Shopify.shop == 'purearts-montreal.myshopify.com') {
+								var thisStatus = checkStoreSpecificUrlCcSpinASale("https://www.purearts.com/pages/purearts-halloween-sale-trick-or-treat-time");
 								//console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
 								if (thisStatus) {
 									console.log('SAS Custom Page Matched for store: ' + Shopify.shop);
