@@ -44,9 +44,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         // return with production URLs
         if (thisLibUrl === "") {
             return {
-                "backend": "https://dev-stock-count-down.carecart.io/FrontController/",
-		        "cssStock": "https://dev-stock-count-down.carecart.io/lib/stock-box.css",
-                "cssTimer": "https://dev-stock-count-down.carecart.io/lib/timer-box.css"
+                "backend": "https://app-countdown-pro.carecart.io/FrontController/",
+		        "cssStock": "https://app-countdown-pro.carecart.io/lib/stock-box.css",
+                "cssTimer": "https://app-countdown-pro.carecart.io/lib/timer-box.css"
             };
         }
 
@@ -97,6 +97,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
     };
 
+/* Hard coded product id's for homa page */
+let productID = 0;
+if(Shopify.shop == "next-level-paramount-deals.myshopify.com"){
+productID = 7067725594823;
+}
     $jq321.ajax({
         type: "GET",
         url: salespoplib_vars_obj.backend_url + 'checkStore/',
@@ -105,7 +110,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         crossDomain: true,
         data: {
 			"domain_url": Shopify.shop,
-            "product_id": (meta.product && meta.product.id)?meta.product.id:''
+            "product_id": (meta.product && meta.product.id)?meta.product.id:productID
         },
         beforeSend: function () {
         },
