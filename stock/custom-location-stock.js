@@ -121,11 +121,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
     });
     
-    let customSeelctor = '';
+    let customSelector = '';
     let finalSelector = '';
-    if(Shopify.shop == "mon-carbone.myshopify.com"){
-    	customSelector = $jq321(".ProductMeta");
-    	finalSelector = customSelector[0];
+    if(Shopify.shop == "grandcruvinhos-teste.myshopify.com"){
+    	customSelector = $jq321(".new-buy");
+    	finalSelector = customSelector[6];
     }
     console.log(customSelector);
 
