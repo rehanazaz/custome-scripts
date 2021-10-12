@@ -1499,7 +1499,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         	$jq321("head").append('<style type="text/css">#sp-notification{text-transform: none !important;letter-spacing: 0px!important}</style>');
         }
         if(Shopify.shop == "toronto-brow-shop.myshopify.com"){
-        	$jq321("head").append('<style type="text/css">#sp-notification{text-transform: none !important;letter-spacing: 0px!important}</style>');
+        	$jq321("head").append('<style type="text/css">#sp-notification{text-transform: none !important;letter-spacing: 0px!important;font-weight: normal !important}</style>');
         }
     
     };
