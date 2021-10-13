@@ -1698,6 +1698,10 @@ console.log(cc_product_id);
 		if(Shopify.shop == "3armystore4.myshopify.com"){
 			finalSelector = masterSelector[0];
 		}
+		if(Shopify.shop == "vriddhisutraayurveda.myshopify.com"){
+			masterSelector = $jq321(".sc-laZMeE"); 
+			finalSelector = $jq321(".sc-laZMeE");
+		}
    
      function stockCountdown(responseStock) {
 
