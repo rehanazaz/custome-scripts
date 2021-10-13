@@ -127,7 +127,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     	customSelector = $jq321(".new-buy");
     	finalSelector = customSelector[6];
     }
-    console.log(customSelector);
+    if(Shopify.shop == "updateshop24.myshopify.com"){
+    	$jq321(".add-to-cart-loader").remove();
+    }
+    
 
      function stockCountdown(response) {
          
