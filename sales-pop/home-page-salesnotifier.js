@@ -1532,6 +1532,9 @@ console.log(cc_product_id);
 if(Shopify.shop == "mccord-corbin-store-1.myshopify.com"){
 productID = 7121230430395;
 }
+if(Shopify.shop == "autofitness-com.myshopify.com"){
+productID = 6816654065873;
+}
     $jq321.ajax({
         type: "GET",
         url: salespoplib_vars_obj.backend_url + 'checkStore/',
