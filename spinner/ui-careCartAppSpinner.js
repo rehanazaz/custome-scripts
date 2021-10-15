@@ -1068,8 +1068,9 @@
 							}
 							if (Shopify.shop == 'purearts-montreal.myshopify.com') {
 								var thisStatus = checkStoreSpecificUrlCcSpinASale("https://www.purearts.com/pages/purearts-halloween-sale-trick-or-treat-time");
+								var thisStatus2 = checkStoreSpecificUrlCcSpinASale("https://www.purearts.com/pages/comic-con-london");
 								//console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
-								if (thisStatus) {
+								if (thisStatus || thisStatus2) {
 									console.log('SAS Custom Page Matched for store: ' + Shopify.shop);
 								} else {
 									console.log('SAS Custom Page NOT Matched for store: ' + Shopify.shop);
