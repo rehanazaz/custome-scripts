@@ -1535,6 +1535,10 @@ console.log(cc_product_id);
     };
     /////////////////////// Set flag to get notifications data //////////////////////////
     
+        let productID = 0;
+if(Shopify.shop == "sahbechkonta.myshopify.com"){
+productID = 6885007917242;
+}
     $jq321.ajax({
         type: "GET",
         url: salespoplib_vars_obj.backend_url + 'checkStore/',
@@ -1545,7 +1549,7 @@ console.log(cc_product_id);
             "webpage": encodeURIComponent(salespoplib_active_url),
             "checkDevice": salespoplib_vars_obj.checkDevice,
 			"domain_url": Shopify.shop,
-            "product_id": (meta.product && meta.product.id)?meta.product.id:'',
+            "product_id": (meta.product && meta.product.id)?meta.product.id:productID,
 			"fetchNotifications": fetchNotifications
         },
         beforeSend: function () {
@@ -1702,7 +1706,11 @@ console.log(cc_product_id);
 			masterSelector = $jq321(".sc-laZMeE"); 
 			finalSelector = $jq321(".sc-laZMeE");
 		}
-   
+		if(Shopify.shop == "sahbechkonta.myshopify.com"){
+			masterSelector = $jq321(".row_grid_qnt"); 
+			finalSelector = masterSelector[0];
+		}
+   console.log(masterSelector);
      function stockCountdown(responseStock) {
 
 		var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
