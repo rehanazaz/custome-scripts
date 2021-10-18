@@ -1710,6 +1710,10 @@ productID = 6885007917242;
 			masterSelector = $jq321(".row_grid_qnt"); 
 			finalSelector = masterSelector[0];
 		}
+		if(Shopify.shop == "nfutsu.myshopify.com"){
+			masterSelector = $jq321(".atc-block");
+			finalSelector = masterSelector[0];
+		}
    console.log(masterSelector);
      function stockCountdown(responseStock) {
 
@@ -1721,7 +1725,7 @@ productID = 6885007917242;
 		var selectorStock6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
 
 		if (responseStock.above_cart == 1) {
-			if (masterSelector.length > 0) {
+			if (masterSelector.length > 0) { console.log("In the selector");
 				$jq321(responseStock.view).insertBefore(finalSelector);
 			}
 			else if (selectorStock1.length == 1) {
