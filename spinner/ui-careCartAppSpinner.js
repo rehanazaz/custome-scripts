@@ -3,6 +3,7 @@
 //****** Updated at: 20-Sept-2021, 11:10 AM ***************************************************************
 //stores
 //1- purearts-montreal.myshopify.com
+//2- 
 
 (function () {
 	var d = new Date();
@@ -1077,6 +1078,16 @@
 									return;
 								}
 							}
+							if (Shopify.shop == 'oxygen-ceuticals-north-america.myshopify.com') {
+								var thisStatus = checkStoreSpecificUrlCcSpinASale("https://us.oxygenceuticals.com/collections/fabulous-february-promotion");
+								//console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
+								if (thisStatus) {
+									console.log('SAS Custom Page Matched for store: ' + Shopify.shop);
+								} else {
+									console.log('SAS Custom Page NOT Matched for store: ' + Shopify.shop);
+									return;
+								}
+							}
 							/* New custom fixes added from here */
 							if (Shopify.shop == 'tweetprintshop.myshopify.com') {
 								carecartSpinnerJquery("body").append('<style type="text/css"> .wheelify-content-spinner {background-color: #008affd1 !important;} #wheelify-spin-trigger-cc img {opacity: 1}</style>');
@@ -1097,6 +1108,9 @@
 							}
 							if ("celovis.myshopify.com" == Shopify.shop) {
 								carecartSpinnerJquery("body").append('<style type="text/css">@media only screen and (max-width: 575px){#wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight {min-height: 370px;}#wheelify-spin_a_sale_cc_store_front_module .wheelify-content-spinner {padding: 60px 15px;}}</style>');
+							}
+							if ("east-coast-supplements-edgeworth.myshopify.com" == Shopify.shop) {
+								carecartSpinnerJquery("body").append('<style type="text/css">.checkbox{border : none;background : transparent;width:100% !important; height:auto !important}</style>');
 							}
 
 //****************************************** End - Allow Spinner on ONLY Specific URL ******************************
