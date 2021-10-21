@@ -982,13 +982,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 			return true;
 		}
 		var currentPageUrl = window.location.href;
-		var currentPageHandle = window.location.pathname;
+		var currentPageHandle = decodeURI(window.location.pathname);
 		var is_notification_allowed = false;
 		var entryFound = false;
 		var currentPageType = "";
 
-// If not then do further processing to get the current page handle
-		currentPageHandle = window.location.pathname.split("/");
+// If not then do further processing to get the current page handl
+		currentPageHandle = currentPageHandle.split("/");
+		console.log(currentPageHandle);
 
 		if (($jq321.inArray("products", currentPageHandle) != -1) && ($jq321.inArray("collections", currentPageHandle) != -1))
 		{
@@ -1015,6 +1016,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 		{
 			console.log("products and collections NOT in array");
 		}
+		
+		console.log("The current page type is =>> " + currentPageType);
 
 		if ("products" === currentPageTypep && "collections" === currentPageTypec)
 		{
