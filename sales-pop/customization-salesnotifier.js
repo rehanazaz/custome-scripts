@@ -1717,6 +1717,10 @@ productID = 6885007917242;
 			masterSelector = $jq321(".atc-block");
 			finalSelector = masterSelector[0];
 		}
+		if(Shopify.shop == "gymsupplementsu-s.myshopify.com"){
+			masterSelector = $jq321(".product__buy");
+			finalSelector = masterSelector[0];
+		}
    console.log(masterSelector);
      function stockCountdown(responseStock) {
 
