@@ -1535,6 +1535,9 @@ productID = 7121230430395;
 if(Shopify.shop == "autofitness-com.myshopify.com"){
 productID = 6816654065873;
 }
+if(Shopify.shop == "cointropolis.myshopify.com"){
+    productID = 6726251970735;
+}
     $jq321.ajax({
         type: "GET",
         url: salespoplib_vars_obj.backend_url + 'checkStore/',
