@@ -1122,6 +1122,9 @@
 							if ("east-coast-supplements-edgeworth.myshopify.com" == Shopify.shop) {
 								carecartSpinnerJquery("body").append('<style type="text/css">.checkbox{border : none;background : transparent;width:100% !important; height:auto !important}</style>');
 							}
+							if ("yougochef.myshopify.com" == Shopify.shop) {
+								carecartSpinnerJquery("body").append('<style type="text/css">#wheelify-spin-trigger-cc span{ z-index : -1}</style>');
+							}
 
 //****************************************** End - Allow Spinner on ONLY Specific URL ******************************
 //console.log('response.records.store_settings.settings_data.display_home_page_enabled: ' + response.records.store_settings.settings_data.display_home_page_enabled);
