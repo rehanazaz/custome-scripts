@@ -3,7 +3,7 @@
  * @author CareCart
  * @link https://apps.shopify.com/partners/care-cart
  * @link https://carecart.io/
- * @version 1.0.22
+ * @version 1.1.7
  *
  * Any unauthorized use and distribution of this and related files, is strictly forbidden.
  * In case of any inquiries, please contact here: https://carecart.io/contact-us/
@@ -24,7 +24,7 @@ function scriptInjection(src, callback) {
 scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     window.$jq321 = jQuery.noConflict(true);
 
-    var version = "1.0.22";
+    var version = "1.1.8";
 
     var salespoplib_active_url = window.location.hostname;
     salespoplib_active_url += (window.location.pathname.substr(-1) !== "/") ? window.location.pathname : window.location.pathname.substr(0, window.location.pathname.length - 1);
@@ -123,9 +123,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     	customSelctor = $jq321(".product-form__payment-container");
     	finalSelector = customSelctor[0];
     }
-    if(Shopify.shop == "vintd.myshopify.com")
+    if(Shopify.shop == "cura-health-limited.myshopify.com")
     {
-    	customSelctor = $jq321(".product-form__payment-container");
+    	customSelctor = $jq321(".product-cart_button");
     	finalSelector = customSelctor[0];
     }
     console.log(customSelctor);
