@@ -20,6 +20,12 @@
 	var CDN_WHEELIFY_URL = 'https://cdn.jsdelivr.net/gh/carecartapp/app-wheelify@1.0.34/';
 
 	var dataSpin = false;
+	
+	var campaignId = null;        // Ab Test Module
+
+    	var abTestId = null;          // Ab Test Module
+
+    	var abTestVariationId = null; // Ab Test Module
 
 	function scriptInjection(src, callback) {
 		var script = document.createElement('script');
@@ -1125,6 +1131,9 @@
 							if ("yougochef.myshopify.com" == Shopify.shop) {
 								carecartSpinnerJquery("body").append('<style type="text/css">#wheelify-spin-trigger-cc span{ z-index : -1}</style>');
 							}
+							if ("timbuk2sg.myshopify.com" == Shopify.shop) {
+								carecartSpinnerJquery("body").append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .wheelify-signupContainer p{padding-bottom: 7px;line-height: 28px;}.checkbox{background:none;width: 100%;height: auto;background: none;}.wheelify-signupContainer .checkbox input{display: inline;}</style>');
+							}
 
 //****************************************** End - Allow Spinner on ONLY Specific URL ******************************
 //console.log('response.records.store_settings.settings_data.display_home_page_enabled: ' + response.records.store_settings.settings_data.display_home_page_enabled);
@@ -1538,7 +1547,10 @@
 						type: 'POST',
 						data: {
 							shop: Shopify.shop,
-							postImpression: 'postImpression'
+                            				postImpression: 'postImpression',
+                            				campaignId: campaignId,              // Ab Test Module
+                            				abTestId: abTestId,                  // Ab Test Module
+                            				abTestVariationId: abTestVariationId // Ab Test Module
 						},
 						crossDomain: true,
 						dataType: "json",
@@ -1576,8 +1588,11 @@
 						url: API_URL + "store-front-api/post-customer-information",
 						type: 'POST',
 						data: {
-							shop: Shopify.shop,
-							customerInformation: customerInformation,
+							 shop: Shopify.shop,
+                            				 customerInformation: customerInformation,
+                            				 campaignId: campaignId,               // Ab Test Module
+                            				 abTestId: abTestId,                   // Ab Test Module
+                            				 abTestVariationId: abTestVariationId  // Ab Test Module
 						},
 						crossDomain: true,
 						dataType: "json",
@@ -1809,11 +1824,28 @@
 										} else {
 					*/
 
+					var ccCurPage = '';
+                    if(checkHomePageCcSpinASale()){
+                        ccCurPage = 'home';
+                    }else if(checkCollectionsCcSpinASale()){
+                        ccCurPage = 'collections';
+                    }else if(checkBlogPageCcSpinASale()){
+                        ccCurPage = 'blogs';
+                    }else if(checkProductCcSpinASale()){
+                        ccCurPage = 'products';
+                    }else if(checkCartCcSpinASale()){
+                        ccCurPage = 'cart';
+                    }else if(checkThanksYouCcSpinASale()){
+                        ccCurPage = 'thankYou';
+                    }else if(!checkIfAnyOtherPage()){
+                        ccCurPage = 'otherPage';
+                    }
 					carecartSpinnerJquery.ajax({
 						url: API_URL + "store-front-api/get-store-information",
 						type: 'GET',
 						data: {
 							shop: Shopify.shop,
+							ccPage: ccCurPage
 
 						},
 						crossDomain: true,
@@ -1821,10 +1853,19 @@
 						dataType: "json",
 						success: function (response) {
 							if (response.records !== null) {
+								if(response.records.parent_campaign_id && response.records.parent_campaign_id !== "" && response.records.parent_campaign_id !== "undefined") {
+                                    campaignId = response.records.parent_campaign_id; // Ab Test Module
+                                }
+                                window._campaignId = campaignId;
+                                abTestId = response.records.ab_test_id; // Ab Test Module
+                                abTestVariationId = response.records.ab_test_variation_id; // Ab Test Module
+                                setTimeout(function () {
 								window.localStorage.setItem('cc-sas-spinner-ajax-cached-time', d);
 								window.localStorage.setItem('cc-sas-spinner-ajax-cached-data', JSON.stringify(response));
 								pupulateData(response);
+							}, parseInt(response.records.store_settings.settings_data.delay_time) * 1000);
 							}
+							
 						},
 						error: function (error) {
 							console.log('SAS Error in Spin A Sale request');
