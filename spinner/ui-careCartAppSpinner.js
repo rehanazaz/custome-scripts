@@ -1013,7 +1013,7 @@
 					if (response && response._metadata && response._metadata.outcome && response._metadata.outcome == "SUCCESS") {
 						console.log('SAS Success Response');
 						/* Check If Module is Active*/
-						if (response.records && response.records.store_settings && response.records.store_settings.is_active) {
+						if (response.records && response.records.store_settings && response.records.store_settings.is_active == 1) {
 							console.log('SAS is active & enabled in Slices Menu');
 //****************************************** Start - Allow Spinner on ONLY Specific URL ******************************
 							/*
