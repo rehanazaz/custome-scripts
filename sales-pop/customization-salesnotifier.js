@@ -1721,6 +1721,10 @@ productID = 6885007917242;
 			masterSelector = $jq321(".product__buy");
 			finalSelector = masterSelector[0];
 		}
+        if(Shopify.shop == "the-f1-gallery.myshopify.com"){
+			masterSelector = $jq321(".product-single__add-to-cart");
+			finalSelector = masterSelector[0];
+		}
    console.log(masterSelector);
      function stockCountdown(responseStock) {
 
@@ -1732,7 +1736,7 @@ productID = 6885007917242;
 		var selectorStock6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
 
 		if (responseStock.above_cart == 1) {
-			if (masterSelector.length > 0) { console.log("In the selector");
+			if (masterSelector.length > 0) {
 				$jq321(responseStock.view).insertBefore(finalSelector);
 			}
 			else if (selectorStock1.length == 1) {
