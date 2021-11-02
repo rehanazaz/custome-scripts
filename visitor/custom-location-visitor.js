@@ -127,7 +127,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
     	customSelctor = $jq321(".product-cart_button");
     	finalSelector = customSelctor[0];
+    }  
+    if(Shopify.shop == "hey-ofertas.myshopify.com")
+    {
+    	customSelctor = $jq321(".product-form__payment-container");
+    	finalSelector = customSelctor[0];
     }
+
+
     console.log(customSelctor);
 
     function visitorCounter(response) {
