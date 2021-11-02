@@ -1114,7 +1114,7 @@
 							if ("mist-jewels.myshopify.com" == Shopify.shop) {
 								carecartSpinnerJquery("body").append('<style type="text/css">.wheelify-signupContainer p {color: black !important;} span#cc-spin-a-sale-consent-text {color: black !important;}</style>');
 							}
-							if ("our-little-hero.myshopify.com" == Shopify.shop) {
+							if ("our-little-hero.myshopify.com_old" == Shopify.shop) {
 								carecartSpinnerJquery("body").append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner {top: 0;left: 0;transform: translate(calc(50vw - 50%), calc(50vh - 50%));width: 40%;min-width: 700px;height: 63%;} .medium-up--one-quarter {width:15%;} .medium-up--one-half {width:70%;}</style>');
 								carecartSpinnerJquery(".site-nav").append('<li><a id="wheelify-spin-trigger-2" onclick="displaySpinnerOnTigger()" href="javascript:void(0)" class="site-nav__link site-nav__link--main"><span class="site-nav__label">Spin to Win</span></a></li>');
 								carecartSpinnerJquery("#wheelify-spin-trigger-cc").css("display", "none");
