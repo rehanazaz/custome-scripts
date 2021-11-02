@@ -1399,7 +1399,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     };
 
     window.showSalesPopup = function (popUpIndexToDisplay) {
-    if(window.location.href == "https://ovlcollection.com/pages/sms-club"){console.log("SP are disabled on this Page");return;}
+    if(window.location.href == "https://ovlcollection.com/pages/sms-club")
+    {console.log("SP are disabled on this Page");return;}
+    if(window.location.href == "https://getselfkit.com/pages/momentum-journal-gift-recipient")
+    {console.log("SP are disabled on this Page");return;}
 
         var now = new Date;
         var utc_timestamp = new Date(now.getUTCFullYear(),now.getUTCMonth(), now.getUTCDate() , 
@@ -1721,10 +1724,6 @@ productID = 6885007917242;
 			masterSelector = $jq321(".product__buy");
 			finalSelector = masterSelector[0];
 		}
-        if(Shopify.shop == "the-f1-gallery.myshopify.com"){
-			masterSelector = $jq321(".product-single__add-to-cart");
-			finalSelector = masterSelector[0];
-		}
    console.log(masterSelector);
      function stockCountdown(responseStock) {
 
@@ -1736,7 +1735,7 @@ productID = 6885007917242;
 		var selectorStock6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
 
 		if (responseStock.above_cart == 1) {
-			if (masterSelector.length > 0) {
+			if (masterSelector.length > 0) { console.log("In the selector");
 				$jq321(responseStock.view).insertBefore(finalSelector);
 			}
 			else if (selectorStock1.length == 1) {
