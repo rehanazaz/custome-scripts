@@ -672,7 +672,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 		"cssTimer": "https://sales-pop.carecart.io/lib/timer-box.css",
 		"cssVisitor": "https://sales-pop.carecart.io/lib/visitor-box.css",
 		"cssSold": "https://sales-pop.carecart.io/lib/sold-box.css",
-                "legacyCss": "https://sales-pop.carecart.io/lib/salesnotifier.css"
+                "legacyCss": "https://sales-pop.carecart.io/lib/salesnotifier.css",
+                "cssQuick": "https://sales-pop.carecart.io/lib/quick-box.css",
+                 "cssTrustBadges": "https://sales-pop.carecart.io/lib/badges-box.css",
 
                 /*"backend": "https://uat-tracking-sales-pop.carecart.io/index.php/FrontController/",
                 "css": "https://dev3.carecart.io/public/front_assets/new-ui/css/notif-box.css",
@@ -700,7 +702,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 	    "cssTimer": "https://" + tempAnchorTag.hostname + "/lib/timer-box.css?v" + version,
 	    "cssVisitor": "https://" + tempAnchorTag.hostname + "/lib/visitor-box.css?v" + version,
 	    "cssSold": "https://" + tempAnchorTag.hostname + "/lib/sold-box.css?v" + version,
-            "legacyCss": "https://" + tempAnchorTag.hostname + "/lib/salesnotifier.css"
+            "legacyCss": "https://" + tempAnchorTag.hostname + "/lib/salesnotifier.css",
+            "cssQuick": "https://sales-pop.carecart.io/lib/quick-box.css",
+                 "cssTrustBadges": "https://sales-pop.carecart.io/lib/badges-box.css",
         };
     }
 
