@@ -1713,6 +1713,9 @@
          });
      });
  
+         if(Shopify.shop == "londonlash-us.myshopify.com"){
+            $jq321("head").append('<style type="text/css">.quick-shop-modal{top: 100px !important, color: #fff !important}</style>');
+        }
     
       function stockCountdown(responseStock) {
  
@@ -1890,6 +1893,7 @@
          });
      }
  // ---------------------------------- <VISITOR COUNTER MODULE> --------------------------------
+ 
  
  // ---------------------------------- <SOLD COUNTER MODULE> --------------------------------
      function soldCounter(response) {
