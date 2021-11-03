@@ -1255,6 +1255,16 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
 			soldCounter(apiResponse.sold);
 		}
+        // TRUST BADGES CALL
+        if (apiResponse && apiResponse.trustBadges && apiResponse.trustBadges != false) 
+        {
+            $jq321("head").append($jq321("<link/>", {
+                rel: "stylesheet",
+                href: serverUrl.cssTrustBadges + "?v" + version
+            }));
+
+            trustBadges(apiResponse.trustBadges);
+        }
 	    
         if (shouldStatsBeShown()) {
             printConfigForNerds();
@@ -1399,10 +1409,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     };
 
     window.showSalesPopup = function (popUpIndexToDisplay) {
-    if(window.location.href == "https://ovlcollection.com/pages/sms-club")
-    {console.log("SP are disabled on this Page");return;}
-    if(window.location.href == "https://getselfkit.com/pages/momentum-journal-gift-recipient")
-    {console.log("SP are disabled on this Page");return;}
+    if(window.location.href == "https://ovlcollection.com/pages/sms-club"){console.log("SP are disabled on this Page");return;}
 
         var now = new Date;
         var utc_timestamp = new Date(now.getUTCFullYear(),now.getUTCMonth(), now.getUTCDate() , 
@@ -1724,6 +1731,15 @@ productID = 6885007917242;
 			masterSelector = $jq321(".product__buy");
 			finalSelector = masterSelector[0];
 		}
+        if(Shopify.shop == "the-f1-gallery.myshopify.com"){
+			masterSelector = $jq321(".product-single__add-to-cart");
+			finalSelector = masterSelector[0];
+		}
+        if(Shopify.shop == "rebirthmilan.myshopify.com"){
+            $jq321("head").append('<style type="text/css">.sale-sticker{background-color:#000 !important, color: #fff !important}</style>');
+        }
+        
+        
    console.log(masterSelector);
      function stockCountdown(responseStock) {
 
@@ -1735,7 +1751,7 @@ productID = 6885007917242;
 		var selectorStock6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
 
 		if (responseStock.above_cart == 1) {
-			if (masterSelector.length > 0) { console.log("In the selector");
+			if (masterSelector.length > 0) {
 				$jq321(responseStock.view).insertBefore(finalSelector);
 			}
 			else if (selectorStock1.length == 1) {
@@ -1977,6 +1993,60 @@ productID = 6885007917242;
         });
     }
 // ---------------------------------- </SOLD COUNTER MODULE> --------------------------------
+
+// ---------------------------------- <TRUST BADGES MODULE> --------------------------------
+function trustBadges(trustBadgesResponse)
+{
+    if (trustBadgesResponse.product_page_show_hide == 1)
+    {
+        /* var selectorTrustBadges = $jq321("form[action='/cart/add']:first");
+        selectorTrustBadges.append(trustBadgesResponse.view); */
+
+       var selectorTrustBadges1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
+       var selectorTrustBadges2 = $jq321("form[action='/cart/add']");
+       var selectorTrustBadges3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
+       var selectorTrustBadges4 = $jq321("form[action='/cart/add']:first");
+
+       if (selectorTrustBadges1.length == 1)
+       {
+           selectorTrustBadges1.append(trustBadgesResponse.view);
+       }
+       else if (selectorTrustBadges2.length == 1)
+       {
+           selectorTrustBadges2.append(trustBadgesResponse.view);
+       }
+       else if (selectorTrustBadges3.length == 1)
+       {
+           selectorTrustBadges3.append(trustBadgesResponse.view);
+       }
+       else if (selectorTrustBadges4.length == 1)
+       {
+           selectorTrustBadges4.append(trustBadgesResponse.view);
+       }
+    }
+
+    $jq321('.trust-badges').replaceWith(trustBadgesResponse.view);
+
+    var bgsize = 'width:'+trustBadgesResponse.badges_size+'px';
+    var selector = $jq321("#CloneBox").find(".LogoImg");
+    selector.attr("style",bgsize);
+
+    if ((trustBadgesResponse.badges_style == 1) || (trustBadgesResponse.badges_style == 3))
+    {
+        $jq321("#CloneBox svg").find('path.ChangeColor-preview').css('fill', trustBadgesResponse.badges_color);
+    }
+
+    if ((trustBadgesResponse.badges_style == 1) || (trustBadgesResponse.badges_style == 2))
+    {
+        $jq321("#CloneBox").find('div.BorderBox').addClass("badges-style-original");
+    }
+
+    if ((trustBadgesResponse.badges_style == 3) || (trustBadgesResponse.badges_style == 4))
+    {
+        $jq321("#CloneBox").find('div.BorderBox').addClass("background-store-front");
+    }
+}
+// ---------------------------------- </TRUST BADGES MODULE> --------------------------------
 	
 	
   });
