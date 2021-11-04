@@ -1714,7 +1714,7 @@
      });
  
          if(Shopify.shop == "londonlash-us.myshopify.com"){
-            $jq321("head").append('<style type="text/css">.quick-shop-modal{top: 100px !important;}</style>');
+            $jq321("head").append('<style type="text/css">.quick-shop-modal{top: 100px !important;} .quick-shop-addtocart button{margin-top: 20px !important} .quickshop-quantity input{min-height: 30px  !important}</style>');
         }
     
       function stockCountdown(responseStock) {
