@@ -97,10 +97,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
     };
 
-/* Hard coded product id's for homa page */
+/* Hard coded product id's for home page */
 let productID = 0;
 if(Shopify.shop == "next-level-paramount-deals.myshopify.com"){
-productID = 7067725594823;
+    productID = 7067725594823;
+}
+
+if(Shopify.shop == "blissin-skin.myshopify.com"){
+    productID = 6939770716332;
 }
     $jq321.ajax({
         type: "GET",
