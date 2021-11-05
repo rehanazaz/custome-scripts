@@ -106,6 +106,11 @@ if(Shopify.shop == "next-level-paramount-deals.myshopify.com"){
 if(Shopify.shop == "blissin-skin.myshopify.com"){
     productID = 6939770716332;
 }
+
+if(Shopify.shop == "shapely-former.myshopify.com"){
+    productID = 7430447038714;
+}
+
     $jq321.ajax({
         type: "GET",
         url: salespoplib_vars_obj.backend_url + 'checkStore/',
