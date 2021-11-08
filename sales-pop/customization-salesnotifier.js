@@ -1742,6 +1742,14 @@ productID = 6885007917242;
         if(Shopify.shop == "rebirthmilan.myshopify.com"){
             $jq321("head").append('<style type="text/css">.sale-sticker{background-color:#000 !important, color: #fff !important}</style>');
         }
+        if(Shopify.shop == "the-f1-gallery.myshopify.com"){
+			masterSelector = $jq321(".product-single__add-to-cart");
+			finalSelector = masterSelector[0];
+		}
+        if(Shopify.shop == "makeup-scientist-cosmetics.myshopify.com"){
+			masterSelector = $jq321(".product-add");
+			finalSelector = masterSelector[8];
+		}
         
         
    console.log(masterSelector);
