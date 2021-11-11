@@ -1225,18 +1225,27 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
 
         // PRODUCT QUICK VIEW FOR NOTIFICATION
-        if (apiResponse && apiResponse.quickViewCollection && apiResponse.quickViewCollection == 1) {
-            setTimeout(function () {
-                // PRODUCT QUICK VIEW FOR COLLECTION PAGES
-                collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
-            }, 3000);
+        if (apiResponse && apiResponse.quickView && apiResponse.quickView !== null) {
+            $jq321("head").append($jq321("<link/>", {
+                rel: "stylesheet",
+                href: serverUrl.cssQuick + "?v" + version
+            }));
 
-            $jq321(window).scroll(function () {
+            productQuickView(apiResponse.quickView);
+			
+			if (apiResponse && apiResponse.quickViewCollection && apiResponse.quickViewCollection == 1) {
+				setTimeout(function () {
+					// PRODUCT QUICK VIEW FOR COLLECTION PAGES
+					collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
+				}, 3000);
 
-                $jq321(".collection-quick-view").remove();
+				$jq321(window).scroll(function () {
 
-                collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
-            });
+					$jq321(".collection-quick-view").remove();
+
+					collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
+				});
+			}
         }
 
         // TRUST BADGES CALL
