@@ -706,7 +706,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
     var serverUrl = getServerUrls();
 
-    function salesPopDebugger() {
+    function salesPopDebugger() {        // $srData = array('event' => 'onload', 'src' => 'https://good-wolverine-16.telebit.io/sales-pop/multi-lingual-salesnotifier.js');
+    	// $shopify->ScriptTag->post($srData);
+
+    	// $shopify->ScriptTag(197684429012)->delete();         
         var spDebugger = {
             log: [],
             storeLog: function (logMsg) {
@@ -1688,6 +1691,10 @@ console.log(cc_product_id);
 		});
 		//Selectors wil goes from here
 		if(Shopify.shop == "3armystore4.myshopify.com"){
+			finalSelector = masterSelector[0];
+		}
+        if(Shopify.shop == "fivve-2.myshopify.com"){
+			masterSelector = $jq321(".product-form__buttons");
 			finalSelector = masterSelector[0];
 		}
    
