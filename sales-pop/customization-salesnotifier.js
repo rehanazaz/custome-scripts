@@ -1746,6 +1746,11 @@ productID = 6885007917242;
 			masterSelector = $jq321(".product-qty");
 			finalSelector = masterSelector[0];
 		}
+        if(Shopify.shop == "leblon-co.myshopify.com"){
+			masterSelector = $jq321(".product-form-add-to-cart");
+			finalSelector = masterSelector[0];
+            $jq321("head").append('<style type="text/css">.add-to-cart-loader{display:none !important}</style>');
+		}
         
    console.log(masterSelector);
      function stockCountdown(responseStock) {
