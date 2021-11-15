@@ -133,7 +133,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if(Shopify.shop == "opar-off-road.myshopify.com"){
     	$jq321("head").append('<style type="text/css">.stock-message{font-size:14px !important}</style>');
     }
-
+    if(Shopify.shop == "sweatbuffy.myshopify.com"){
+    	customSelector = $jq321(".addCart");
+    	finalSelector = customSelector[0];
+    }
     
 
      function stockCountdown(response) {
