@@ -1751,6 +1751,12 @@ productID = 6885007917242;
 			finalSelector = masterSelector[0];
             $jq321("head").append('<style type="text/css">.add-to-cart-loader{display:none !important}</style>');
 		}
+        if(Shopify.shop == "lady-lash.myshopify.com"){
+            $jq321("head").append('<style type="text/css">.quick-shop-modal{top: 100px !important;} .quick-shop-addtocart button{margin-top: 20px !important; background-color: #C3aa94 !important} .quickshop-quantity input{min-height: 30px  !important; border: 1px solid #C3aa94 !important} .view-full-details a{color: #C3aa94 !important} .quantity-button.quantity-up{border-color: #C3aa94 !important;} .quantity-button.quantity-down{border-color: #C3aa94 !important;}  </style>');
+        }
+        if(Shopify.shop == "www-chicboutique-com-au.myshopify.com"){
+            $jq321("head").append('<style type="text/css">#sp-notification{color: #fff !important;}  </style>');
+        }
         
    console.log(masterSelector);
      function stockCountdown(responseStock) {
