@@ -1980,11 +1980,9 @@
                                 abTestId = response.records.ab_test_id; // Ab Test Module
                                 abTestVariationId = response.records.ab_test_variation_id; // Ab Test Module
 
-                                setTimeout(function () {
-                                    window.localStorage.setItem('cc-sas-spinner-ajax-cached-time', d);
-                                    window.localStorage.setItem('cc-sas-spinner-ajax-cached-data', JSON.stringify(response));
-                                    pupulateData(response);
-                                }, parseInt(response.records.store_settings.settings_data.delay_time) * 1000);
+                                window.localStorage.setItem('cc-sas-spinner-ajax-cached-time', d);
+                                window.localStorage.setItem('cc-sas-spinner-ajax-cached-data', JSON.stringify(response));
+                                pupulateData(response);
                             }
                         },
                         error: function (error) {
