@@ -868,12 +868,16 @@
                     if (Shopify.shop == 'auscrystals-com-au.myshopify.com') {
                         carecartSpinnerJquery("body").append("<style type='text/css'>.pegContainer{transform-origin: 0px 0px 0px;transform: matrix(1.70666, 0, 0, 1.70666, -374.604, 62.2927);}</style>");
                     }
+
                     /*if(Shopify.shop == 'dorsila.myshopify.com'){
                         let selector = carecartSpinnerJquery(".wheelify-wheelContainer svg").find('g.valueContainer').children();
                         for (let i = 1; i < selector.length; i++) {
                             let textTag = $(selector[i]).find('text').attr("transform","rotate(90, 440, -2)");
                         }
                     }*/
+                    if (Shopify.shop == 'santhigram.myshopify.com') {
+						carecartSpinnerJquery("body").append("<style type='text/css'>copy-button{color: #384f66 !important;} .</style>");
+					}
                 }
 
                 function hideSpinASaleModule() {
