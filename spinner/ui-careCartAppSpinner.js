@@ -1105,7 +1105,8 @@
 								}
 							}
 							if (Shopify.shop == 'bighammerwines-com-2.myshopify.com') {
-								var thisStatus = checkStoreSpecificUrlCcSpinASale("https://www.bighammerwines.com/pages/blackfriday");
+								// var thisStatus = checkStoreSpecificUrlCcSpinASale("https://www.bighammerwines.com/pages/blackfriday");
+								var thisStatus = checkStoreSpecificUrlCcSpinASale("https://www.bighammerwines.com/pages/blackfridaycybermonday");
 								//console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
 								if (thisStatus) {
 									console.log('SAS Custom Page Matched for store: ' + Shopify.shop);
