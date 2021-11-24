@@ -2029,6 +2029,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     masterSelector = $jq321(".group-cw");
     finalSelector = masterSelector[0];
   }
+  if(Shopify.shop == "born-rose-bcn.myshopify.com"){
+    masterSelector = $jq321(".ProductMeta__button-wrapper");
+    finalSelector = masterSelector[1];
+  }
+  if(Shopify.shop == "wallim.myshopify.com"){
+    masterSelector = $jq321(".ProductForm__QuantitySelector");
+    finalSelector = masterSelector[0];
+  }
 
   console.log(masterSelector);
   function stockCountdown(responseStock) {
@@ -2291,9 +2299,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
   }
   // ---------------------------------- </SOLD COUNTER MODULE> --------------------------------
 
-  // ******************************************************************************************
+ // ******************************************************************************************
  // ---------------------------------- <PRODUCT QUICK VIEW FOR NOTIFICATION> -----------------
  // ******************************************************************************************
+ 
  // QUICK PRODUCT VIEW CLOSE
  $jq321('body').on('click', '.close-quickshop', function () {
     $jq321(".quick-shop-modal").hide();
