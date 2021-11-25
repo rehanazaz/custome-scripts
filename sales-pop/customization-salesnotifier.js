@@ -1666,7 +1666,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
       console.log("SP are disabled on this Page");
       return;
     }
-
+    // if (window.location.href != "https://qilifestore.com/") {
+    //   console.log("SP are disabled on this Page");
+    //   return;
+    // }
+    // else{
+    //   console.log("helo",window.location.href); 
+    // }
     var now = new Date();
     var utc_timestamp = new Date(
       now.getUTCFullYear(),
@@ -2035,6 +2041,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
   }
   if(Shopify.shop == "wallim.myshopify.com"){
     masterSelector = $jq321(".ProductForm__QuantitySelector");
+    finalSelector = masterSelector[0];
+  }
+  if(Shopify.shop == "feelmodestuk.myshopify.com"){
+    masterSelector = $jq321(".groups-btn");
     finalSelector = masterSelector[0];
   }
 
