@@ -133,7 +133,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     	customSelctor = $jq321(".product-form__payment-container");
     	finalSelector = customSelctor[0];
     }
-
+    if(Shopify.shop == "nulifebeauty.myshopify.com")
+    {
+    	customSelctor = $jq321(".modal_price");
+    	finalSelector = customSelctor[0];
+    }
+    
 
     console.log(customSelctor);
 
