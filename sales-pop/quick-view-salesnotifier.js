@@ -1963,7 +1963,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         if (Shopify.shop == "whopcart.myshopify.com") { 
             $jq321(".quickshop-footer").css("display", "block");
-            $jq321(".quick-shop-addtocart").css("display", "none");
+            $jq321(".quickshop-footer-soldoutall").css("display", "none");
             $jq321(".sale-sticker").html('<span class="sticker-text">Sale</span>');
           }
 
