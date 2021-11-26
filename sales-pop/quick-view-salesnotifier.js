@@ -1678,7 +1678,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         '<style type="text/css">.quick-shop-modal{padding-top: 120px !important;} .quick-shop-addtocart button{margin-top: 10px !important; background-color: #Efe7da !important; color: #000 !important;} .sale-sticker{background-color: #Efe7da !important} .view-full-details a{color: #000 !important} .quickshop-quantity input{min-height: 30px  !important; border: 1px solid #Efe7da !important} .quantity-button.quantity-up{border-color: #Efe7da !important;} .quantity-button.quantity-down{border-color: #Efe7da !important;}  </style>'
       );
     }
-  
 
     function stockCountdown(responseStock) {
 
@@ -1961,6 +1960,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         $jq321("#loader").hide();
         var selector = $jq321(".quick-shop-popup-container");
         selector.append(response.quick);
+
+        if (Shopify.shop == "whopcart.myshopify.com") { 
+            $jq321(".quickshop-footer").css("display", "block");
+            $jq321(".quick-shop-addtocart").css("display", "none");
+            $jq321(".sale-sticker").html('<span class="sticker-text">Sale</span>');
+          }
 
         // STOCK COUNTDOWN CALL
         stockCountdownView(response.stock);
