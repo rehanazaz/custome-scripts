@@ -2047,6 +2047,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     masterSelector = $jq321(".groups-btn");
     finalSelector = masterSelector[0];
   }
+  if(Shopify.shop == "olla-bowls-ita.myshopify.com"){
+    masterSelector = $jq321(".pf-c");
+    finalSelector = masterSelector[14];
+  }
 
   console.log(masterSelector);
   function stockCountdown(responseStock) {
