@@ -1132,6 +1132,30 @@
                                     return;
                                 }
                             }
+                            
+                            if (Shopify.shop == 'jumping-the-couch.myshopify.com') {
+                                var thisStatus = checkStoreSpecificUrlCcSpinASale("https://savageffects.com/products/the-ultimate-bundle");
+                                //console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
+                                if (thisStatus) {
+                                    console.log('SAS Custom Page Matched for store: ' + Shopify.shop);
+                                }
+                                else {
+                                    console.log('SAS Custom Page NOT Matched for store: ' + Shopify.shop);
+                                    return;
+                                }
+                            }
+                            
+                            if (Shopify.shop == 'savageffects.myshopify.com') {
+                                var thisStatus = checkStoreSpecificUrlCcSpinASale("https://savageffects.com/products/the-ultimate-bundle");
+                                //console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
+                                if (thisStatus) {
+                                    console.log('SAS Custom Page Matched for store: ' + Shopify.shop);
+                                }
+                                else {
+                                    console.log('SAS Custom Page NOT Matched for store: ' + Shopify.shop);
+                                    return;
+                                }
+                            }
                             /* New custom fixes added from here */
                             if (Shopify.shop == 'tweetprintshop.myshopify.com') {
                                 carecartSpinnerJquery("body").append('<style type="text/css"> .wheelify-content-spinner {background-color: #008affd1 !important;} #wheelify-spin-trigger-cc img {opacity: 1}</style>');
@@ -1147,6 +1171,7 @@
                                 carecartSpinnerJquery(".site-nav").append('<li><a id="wheelify-spin-trigger-2" onclick="displaySpinnerOnTigger()" href="javascript:void(0)" class="site-nav__link site-nav__link--main"><span class="site-nav__label">Spin to Win</span></a></li>');
                                 carecartSpinnerJquery("#wheelify-spin-trigger-cc").css("display", "none");
                             }
+
 
                             //****************************************** End - Allow Spinner on ONLY Specific URL ******************************
                             //console.log('response.records.store_settings.settings_data.display_home_page_enabled: ' + response.records.store_settings.settings_data.display_home_page_enabled);
