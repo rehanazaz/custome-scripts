@@ -2039,8 +2039,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     masterSelector = $jq321(".ProductMeta__button-wrapper");
     finalSelector = masterSelector[1];
   }
+  if(Shopify.shop == "born-rose-bcn-int.myshopify.com"){
+    masterSelector = $jq321(".ProductMeta__button-wrapper");
+    finalSelector = masterSelector[1];
+  }
   if(Shopify.shop == "wallim.myshopify.com"){
-    masterSelector = $jq321(".ProductForm__QuantitySelector");
+    masterSelector = $jq321(".ProductMeta__PriceList");
     finalSelector = masterSelector[0];
   }
   if(Shopify.shop == "feelmodestuk.myshopify.com"){
