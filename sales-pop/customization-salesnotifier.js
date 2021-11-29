@@ -1462,27 +1462,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
       soldCounter(apiResponse.sold);
     }
-
-       // PRODUCT QUICK VIEW FOR NOTIFICATION
-       if (apiResponse && apiResponse.quickView && apiResponse.quickView !== null)
-       {
-           $jq321("head").append($jq321("<link/>", {
-               rel: "stylesheet",
-               href: serverUrl.cssQuick + "?v" + version
-           }));
-
-           productQuickView(apiResponse.quickView);
-
-           if (apiResponse && apiResponse.quickViewCollection && apiResponse.quickViewCollection == 1)
-           {
-               setTimeout(function () {
-            // PRODUCT QUICK VIEW FOR COLLECTION PAGES
-                   collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
-               }, 3000);
-           }
-       }
-       
-
     // TRUST BADGES CALL
     if (
       apiResponse &&
@@ -1666,13 +1645,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
       console.log("SP are disabled on this Page");
       return;
     }
-    // if (window.location.href != "https://qilifestore.com/") {
-    //   console.log("SP are disabled on this Page");
-    //   return;
-    // }
-    // else{
-    //   console.log("helo",window.location.href); 
-    // }
+
     var now = new Date();
     var utc_timestamp = new Date(
       now.getUTCFullYear(),
@@ -2006,54 +1979,21 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
       '<style type="text/css">.sale-sticker{background-color:#000 !important, color: #fff !important}</style>'
     );
   }
+  if (Shopify.shop == "the-f1-gallery.myshopify.com") {
+    masterSelector = $jq321(".product-single__add-to-cart");
+    finalSelector = masterSelector[0];
+  }
   if (Shopify.shop == "makeup-scientist-cosmetics.myshopify.com") {
-    masterSelector = $jq321(".product-qty");
-    finalSelector = masterSelector[0];
-  }
-  if (Shopify.shop == "leblon-co.myshopify.com") {
-    masterSelector = $jq321(".product-form-add-to-cart");
-    finalSelector = masterSelector[0];
-    $jq321("head").append(
-      '<style type="text/css">.add-to-cart-loader{display:none !important}</style>'
-    );
-  }
-  if (Shopify.shop == "lady-lash.myshopify.com") {
-    $jq321("head").append(
-      '<style type="text/css">.quick-shop-modal{top: 100px !important;} .quick-shop-addtocart button{margin-top: 20px !important; background-color: #C3aa94 !important} .quickshop-quantity input{min-height: 30px  !important; border: 1px solid #C3aa94 !important} .view-full-details a{color: #C3aa94 !important} .quantity-button.quantity-up{border-color: #C3aa94 !important;} .quantity-button.quantity-down{border-color: #C3aa94 !important;}  </style>'
-    );
-  }
-  if (Shopify.shop == "www-chicboutique-com-au.myshopify.com") {
-    $jq321("head").append(
-      '<style type="text/css">#sp-notification{color: #fff !important;}  </style>'
-    );
-  }
-  if (Shopify.shop == "atlkidz-stuff.myshopify.com") {
-      
-    finalSelector = $jq321(".product-form__payment-container");
-  }  
-  if (Shopify.shop == "dragonmaster-store.myshopify.com") {
-    masterSelector = $jq321(".group-cw");
-    finalSelector = masterSelector[0];
-  }
-  if(Shopify.shop == "born-rose-bcn.myshopify.com"){
-    masterSelector = $jq321(".ProductMeta__button-wrapper");
+    masterSelector = $jq321(".selector-wrapper");
     finalSelector = masterSelector[1];
   }
-  if(Shopify.shop == "born-rose-bcn-int.myshopify.com"){
-    masterSelector = $jq321(".ProductMeta__button-wrapper");
+  if (Shopify.shop == "makeup-scientist-cosmetics.myshopify.com") {
+    masterSelector = $jq321(".selector-wrapper");
     finalSelector = masterSelector[1];
   }
-  if(Shopify.shop == "wallim.myshopify.com"){
-    masterSelector = $jq321(".ProductMeta__PriceList");
+  if (Shopify.shop == "thebakerslife.myshopify.com") {
+    masterSelector = $jq321(".product-form");
     finalSelector = masterSelector[0];
-  }
-  if(Shopify.shop == "feelmodestuk.myshopify.com"){
-    masterSelector = $jq321(".groups-btn");
-    finalSelector = masterSelector[0];
-  }
-  if(Shopify.shop == "olla-bowls-ita.myshopify.com"){
-    masterSelector = $jq321(".pf-c");
-    finalSelector = masterSelector[14];
   }
 
   console.log(masterSelector);
@@ -2317,273 +2257,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
   }
   // ---------------------------------- </SOLD COUNTER MODULE> --------------------------------
 
- // ******************************************************************************************
- // ---------------------------------- <PRODUCT QUICK VIEW FOR NOTIFICATION> -----------------
- // ******************************************************************************************
- 
- // QUICK PRODUCT VIEW CLOSE
- $jq321('body').on('click', '.close-quickshop', function () {
-    $jq321(".quick-shop-modal").hide();
-});
-
-function productQuickView(response)
-{
-    var selector = $jq321("body");
-    selector.append(response);
-}
-
-$jq321("body").on('click', '#sp-notification', function (e) {
-    e.preventDefault();
-
-    var url = $jq321(this).attr('data-product-link');
-    var product_id = $jq321(this).attr('data-product-id');
-    var store_id = $jq321(this).attr('data-store-id');
-    var quick_view = $jq321(this).attr('data-quick-view');
-
-    $jq321('#clockdivpreviewSales').attr('id', 'clockdivpreviewSalesQuick');
-
-    if(quick_view == 1)
-    {
-        var selectorqpv = $jq321(".quick-shop-gallery");
-        if (selectorqpv.length == 1)
-        {
-            $jq321(".quick-shop-gallery").remove();
-            $jq321(".quick-shop-text-wrap").remove();
-            $jq321(".close-quickshop").remove();
-            $jq321(".quick-shop-modal").show();
-            $jq321(".quick-shop-popup-container").addClass("loader-container");
-            $jq321("#loader").show();
-        }
-        else
-        {
-            $jq321(".quick-shop-modal").show();
-            $jq321(".quick-shop-popup-container").addClass("loader-container");
-        }
-
-        $jq321.ajax({
-            type: "GET",
-            url: serverUrl.backend+'quickView',
-            dataType: "jsonp",
-            jsonpCallback: "callProductView",
-            crossDomain: true,
-            data: {
-                "url": url,
-                "product_id": product_id,
-                "store_id": store_id
-            },
-            success: function () {
-
-            }
-        });
-    }
-});
-
-window.callProductView = function (response) {
-    $jq321(".quick-shop-popup-container").removeClass("loader-container");
-    $jq321("#loader").hide();
-    var selector = $jq321(".quick-shop-popup-container");
-    selector.append(response.quick);
-
-// STOCK COUNTDOWN CALL
-    stockCountdownView(response.stock);
-    if (response.timer != false)
-    {
-// COUNTDOWN TIMER CALL
-        timeCountdownView(response.timer);
-    }
-
-};
-
-// GET QUICK PRODUCT VIEW STOCK COUNTDOWN
-function stockCountdownView(responseStock) {
-
-    $jq321("head").append($jq321("<link/>", {
-        rel: "stylesheet",
-        href: serverUrl.cssStock
-    }));
-
-    var selectorStockView = $jq321(".quickshop-footer");
-
-    if (responseStock.above_cart == 1)
-    {
-        if (selectorStockView.length == 1)
-        {
-            $jq321(responseStock.view).insertBefore(selectorStockView);
-            $jq321(".stock-top").addClass("stock-top-quick-view");
-        }
-    }
-    else
-    {
-        if (selectorStockView.length == 1)
-        {
-            $jq321(responseStock.view).insertAfter(selectorStockView);
-            $jq321(".stock-top").addClass("stock-bottom-quick-view");
-        }
-    }
-}
-
-// QUICK PRODUCT VIEW COUNTDOWN TIMER
-function timeCountdownView(responseTime) {
-
-    $jq321("head").append($jq321("<link/>", {
-        rel: "stylesheet",
-        href: serverUrl.cssTimer
-    }));
-
-    var selectorTimeView = $jq321(".quickshop-footer");
-
-    if (responseTime.above_cart == 1)
-    {
-        if (selectorTimeView.length == 1)
-        {
-            $jq321(responseTime.view).insertBefore(selectorTimeView);
-            $jq321(".timer-store-front").addClass("timer-top-quick-view");
-        }
-    }
-    else
-    {
-        if (selectorTimeView.length == 1)
-        {
-            $jq321(responseTime.view).insertAfter(selectorTimeView);
-            $jq321(".timer-store-front").addClass("timer-bottom-quick-view");
-        }
-    }
-
-    var deadline = responseTime.time;
-    initializeClock('clockdivpreviewSales', deadline);
-}
-// ---------------------------------- </PRODUCT QUICK VIEW FOR NOTIFICATION> --------------------------------
-
-// ******************************************************************************************
-// ---------------------------------- <PRODUCT QUICK VIEW FOR COLLECTION PAGE> -----------------
-// ******************************************************************************************
-
-function collectionQuickView(quickViewCollectionText, quickViewCollectionLayout, quickViewCollectionPosition)
-{
-    var allLinks = [];
-    var product_id = (meta.product && meta.product.id) ? meta.product.id : '';
-
-    if (product_id == '')
-    {
-        $jq321("a").each(function() {
-            var href = $jq321(this).attr('href');
-            var url = href.split("/");
-
-            if ($jq321.inArray("products", url) != -1)
-            {
-                allLinks.push(href);
-            }
-        });
-    }
-    else
-    {
-        $jq321("a").each(function() {
-            var href = $jq321(this).attr('href');
-            var url = href.split("/");
-            if ($jq321.inArray("products", url) != -1)
-            {
-                var otherurl = href.split("=");
-                var res = otherurl[0].split("?");
-                if (res[1] == 'pr_prod_strat')
-                {
-                    allLinks.push(href);
-                }
-            }
-        });
-    }
-
-// PRODUCT QUICK VIEW COLLECTION CREATE BUTTON
-    var divCount = 0;
-    var linkCount = 0;
-
-    $jq321("img").each(function() {
-
-// GET IMAGE URL
-        var href = $jq321(this).attr('data-srcset');
-        var data_image = $jq321(this).attr('data-image');
-        var srcset = $jq321(this).attr('srcset');
-
-        if (((href !== undefined) && (data_image !== undefined)) || ((srcset !== undefined) && (product_id == '')))
-        {
-            if (quickViewCollectionLayout == 2)
-            {
-// FOR QUICK VIEW BUTTON
-                var newButton = '<input type="button" class="quick-view collection-quick-view" value="'+quickViewCollectionText+'" data-product-url="' + allLinks[linkCount] + '" data-quick-view="1">';
-            }
-            else if (quickViewCollectionLayout == 1)
-            {
-// FOR QUICK VIEW EYE
-                var newButton = '<a id="positon-right" class="EyeViewBtn collection-quick-view ' + quickViewCollectionPosition + '" data-product-url="' + allLinks[linkCount] + '" data-quick-view="1" href="#"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="577.029px" height="577.029px" viewBox="0 0 577.029 577.029" style="enable-background:new 0 0 577.029 577.029;" xml:space="preserve"><path d="M288.514,148.629c73.746,0,136.162,33.616,175.539,61.821c46.652,33.415,70.66,65.737,76.885,78.065   c-6.232,12.327-30.232,44.649-76.885,78.065c-39.377,28.204-101.793,61.82-175.539,61.82c-73.746,0-136.161-33.616-175.539-61.82   c-46.661-33.416-70.66-65.738-76.894-78.065c6.234-12.328,30.233-44.65,76.885-78.065   C152.353,182.245,214.768,148.629,288.514,148.629 M288.514,113.657C129.176,113.657,0,253.543,0,288.515   s129.176,174.857,288.514,174.857c159.339,0,288.515-139.886,288.515-174.857S447.854,113.657,288.514,113.657L288.514,113.657z    M288.514,183.601c-57.939,0-104.914,46.975-104.914,104.914c0,57.938,46.975,104.914,104.914,104.914   s104.914-46.976,104.914-104.914C393.428,230.576,346.453,183.601,288.514,183.601z M260.266,288.515   c-24.515,0-44.388-19.873-44.388-44.388c0-24.515,19.873-44.387,44.388-44.387c24.515,0,44.388,19.873,44.388,44.387   C304.654,268.642,284.781,288.515,260.266,288.515z"/></svg></a>';
-
-            }
-
-            var check = $jq321(this).parent();
-            
-// CREATE DIV
-            var newDiv = '<div id="image-with-button'+divCount+'" class="button-on-hover"></div>';
-
-// INSERT DIV
-            $jq321(newDiv).insertBefore(check);
-
-// APPEND IMAGE IN DIV
-            $jq321(check).appendTo($jq321('#image-with-button'+divCount));
-
-// INSERT BUTTON/EYE IN DIV
-                $jq321(newButton).insertBefore(this);
-            divCount++;
-            linkCount++;
-        }
-    });
-}
-
-// PRODUCT QUICK VIEW COLLECTION CALL
-$jq321("body").on('click', '.collection-quick-view', function (e) {
-    e.preventDefault();
-
-    var quick_view = $jq321(this).attr('data-quick-view');
-    var data_product_url = $jq321(this).attr('data-product-url');
-
-    $jq321('#clockdivpreviewSales').attr('id', 'clockdivpreviewSalesQuick');
-
-    if(quick_view == 1)
-    {
-        var selectorqpv = $jq321(".quick-shop-gallery");
-        if (selectorqpv.length == 1)
-        {
-            $jq321(".quick-shop-gallery").remove();
-            $jq321(".quick-shop-text-wrap").remove();
-            $jq321(".close-quickshop").remove();
-            $jq321(".quick-shop-modal").show();
-            $jq321(".quick-shop-popup-container").addClass("loader-container");
-            $jq321("#loader").show();
-        }
-        else
-        {
-            $jq321(".quick-shop-modal").show();
-            $jq321(".quick-shop-popup-container").addClass("loader-container");
-        }
-
-        $jq321.ajax({
-            type: "GET",
-            url: serverUrl.backend+'quickViewCollection',
-            dataType: "jsonp",
-            jsonpCallback: "callProductView",
-            crossDomain: true,
-            data: {
-                "data_product_url": data_product_url,
-                "domain_url": Shopify.shop
-            },
-            success: function () {
-
-            }
-        });
-    }
-});
-// ---------------------------------- </PRODUCT QUICK VIEW FOR COLLECTION PAGE> --------------------------------
-
   // ---------------------------------- <TRUST BADGES MODULE> --------------------------------
   function trustBadges(trustBadgesResponse) {
-
     if (trustBadgesResponse.product_page_show_hide == 1) {
       /* var selectorTrustBadges = $jq321("form[action='/cart/add']:first");
         selectorTrustBadges.append(trustBadgesResponse.view); */
@@ -2596,11 +2271,8 @@ $jq321("body").on('click', '.collection-quick-view', function (e) {
         .find("button[type='submit'],input[type='submit']")
         .parent();
       var selectorTrustBadges4 = $jq321("form[action='/cart/add']:first");
-      
-      if (masterSelector.length > 0) {
-        $jq321(trustBadgesResponse.view).insertAfter(finalSelector);
-      }
-      else if (selectorTrustBadges1.length == 1) {
+
+      if (selectorTrustBadges1.length == 1) {
         selectorTrustBadges1.append(trustBadgesResponse.view);
       } else if (selectorTrustBadges2.length == 1) {
         selectorTrustBadges2.append(trustBadgesResponse.view);
