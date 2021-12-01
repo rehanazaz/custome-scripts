@@ -1179,6 +1179,20 @@
                                     console.log('SAS Custom Page NOT Matched for store: ' + Shopify.shop);
                                     return;
                                 }
+                            }                            
+                            
+                            if (Shopify.shop == 'thegourmetbox.myshopify.com') {
+                                var thisStatus1 = checkStoreSpecificUrlCcSpinASale("https://www.thegourmetbox.in/collections/gourmet-gift-boxes");
+                                var thisStatus2 = checkStoreSpecificUrlCcSpinASale("https://www.thegourmetbox.in/collections/other-hampers");
+                                var thisStatus3 = checkStoreSpecificUrlCcSpinASale("https://www.thegourmetbox.in/collections/christmas-gifts");
+                                //console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
+                                if (thisStatus1 || thisStatus2 || thisStatus3) {
+                                    console.log('SAS Custom Page Matched for store: ' + Shopify.shop);
+                                }
+                                else {
+                                    console.log('SAS Custom Page NOT Matched for store: ' + Shopify.shop);
+                                    return;
+                                }
                             }
                             /* New custom fixes added from here */
                             if (Shopify.shop == 'tweetprintshop.myshopify.com') {
