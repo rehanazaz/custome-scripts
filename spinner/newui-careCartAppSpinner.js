@@ -1132,7 +1132,7 @@
                                     return;
                                 }
                             }
-                            
+
                             if (Shopify.shop == 'jumping-the-couch.myshopify.com') {
                                 var thisStatus = checkStoreSpecificUrlCcSpinASale("https://savageffects.com/products/the-ultimate-bundle");
                                 //console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
@@ -1144,7 +1144,7 @@
                                     return;
                                 }
                             }
-                            
+
                             if (Shopify.shop == 'savageffects.myshopify.com') {
                                 var thisStatus = checkStoreSpecificUrlCcSpinASale("https://savageffects.com/products/the-ultimate-bundle");
                                 //console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
@@ -1156,7 +1156,7 @@
                                     return;
                                 }
                             }
-                            
+
                             if (Shopify.shop == 'atdukaaan.myshopify.com') {
                                 var thisStatus = checkStoreSpecificUrlCcSpinASale("https://atdukaan.com/products/cashew");
                                 //console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
@@ -1179,8 +1179,8 @@
                                     console.log('SAS Custom Page NOT Matched for store: ' + Shopify.shop);
                                     return;
                                 }
-                            }                            
-                            
+                            }
+
                             if (Shopify.shop == 'thegourmetbox.myshopify.com') {
                                 var thisStatus1 = checkStoreSpecificUrlCcSpinASale("https://www.thegourmetbox.in/collections/gourmet-gift-boxes");
                                 var thisStatus2 = checkStoreSpecificUrlCcSpinASale("https://www.thegourmetbox.in/collections/other-hampers");
@@ -1205,7 +1205,18 @@
                                     console.log('SAS Custom Page NOT Matched for store: ' + Shopify.shop);
                                     return;
                                 }
-                            }  
+                            }
+                            if (Shopify.shop == 'piume-shop.myshopify.com') {
+                                var thisStatus = checkStoreSpecificUrlCcSpinASale("https://piumestudio.com/pages/newsletter-christmas");
+                                //console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
+                                if (thisStatus) {
+                                    console.log('SAS Custom Page Matched for store: ' + Shopify.shop);
+                                }
+                                else {
+                                    console.log('SAS Custom Page NOT Matched for store: ' + Shopify.shop);
+                                    return;
+                                }
+                            }
                             /* New custom fixes added from here */
                             if (Shopify.shop == 'tweetprintshop.myshopify.com') {
                                 carecartSpinnerJquery("body").append('<style type="text/css"> .wheelify-content-spinner {background-color: #008affd1 !important;} #wheelify-spin-trigger-cc img {opacity: 1}</style>');
