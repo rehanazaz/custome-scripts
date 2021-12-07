@@ -912,14 +912,12 @@
                     if (Shopify.shop == 'presha-luxury.myshopify.com') {
                         carecartSpinnerJquery("#NewsletterPopup-newsletter-popup").removeAttr("tabindex");
                     }
-                    /*
-                                        if(Shopify.shop == 'dorsila.myshopify.com'){
-                                            let selector = carecartSpinnerJquery(".wheelify-wheelContainer svg").find('g.valueContainer').children();
-                                            for (let i = 1; i < selector.length; i++) {
-                                                let textTag = $(selector[i]).find('text').attr("transform","rotate(90, 440, -2)");
-                                            }
-                                        }
-                    */
+                    if ("jackfruit-land.myshopify.com" == Shopify.shop) {
+                        let effectedDiv = carecartSpinnerJquery("div#wheelify-spin_a_sale_cc_store_front_module .wheelify-content-spinner");
+                        let newStyle = 'background-color: rgb(0, 128, 64) !important; background-size: cover !important; background-repeat: no-repeat !important; background-position: center center !important; background-image: url("https://cdn.jsdelivr.net/gh/carecartapp/app-wheelify@2.0.3/1_christmas_bg.jpg") !important;color:white !important';
+                        effectedDiv.removeAttr("style");
+                        effectedDiv.attr("style", newStyle);
+                    }
                 }
 
                 function hideSpinASaleModule() {
