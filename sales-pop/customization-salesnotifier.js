@@ -2063,6 +2063,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     masterSelector = $jq321(".product-form");
     finalSelector = masterSelector[0];
   }
+  if (Shopify.shop == "whopcart.myshopify.com") { 
+    $jq321("head").append(
+      '<style type="text/css">.quick-shop-popup{max-width: 1080px !important;}</style>'
+    );
+  }
   
   console.log(masterSelector);
   function stockCountdown(responseStock) {
@@ -2392,6 +2397,11 @@ window.callProductView = function (response) {
     var selector = $jq321(".quick-shop-popup-container");
     selector.append(response.quick);
 
+    if (Shopify.shop == "whopcart.myshopify.com") { 
+      $jq321(".quickshop-footer").css("display", "block");
+      $jq321(".quickshop-footer-soldoutall").css("display", "none");
+      $jq321(".sale-sticker").html('<span class="sticker-text">Sale</span>');
+    }
 // STOCK COUNTDOWN CALL
     stockCountdownView(response.stock);
     if (response.timer != false)
