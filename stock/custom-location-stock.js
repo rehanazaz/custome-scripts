@@ -141,6 +141,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     	customSelector = $jq321(".form__column");
     	finalSelector = customSelector[1];
     }
+    if(Shopify.shop == "sheopal-s.myshopify.com"){
+    	customSelector = $jq321(".paymentButtonsWrapper");
+    	finalSelector = customSelector[0];
+    }
     
 
      function stockCountdown(response) {
