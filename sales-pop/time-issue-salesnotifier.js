@@ -2060,7 +2060,22 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     masterSelector = $jq321(".product-form");
     finalSelector = masterSelector[0];
   }
+  if (Shopify.shop == "weselllbeauty.myshopify.com") {
+    masterSelector = $jq321(".payment-and-quantity");
+    finalSelector = masterSelector[0];
+  }
+  if (Shopify.shop == "follus.myshopify.com") {
+    masterSelector = $jq321(".add_to_cart");
+    finalSelector = masterSelector[0];
+    $jq321("head").append(
+      '<style type="text/css">.sp-product-image img{ width: 75px; line-height: 75px; height: 75px; float: left; overflow: hidden; background-size: contain; background-position: center; background-size: cover; background-repeat: no-repeat; background-color: white; display: block; border-radius:50%; } .notifyjs-arrow { position: absolute; z-index: 2; width: 10px; height: 10px; right: 0; .notifyjs-salesPopStyle-base notifyjs-salesPopStyle-error div{ overflow: hidden; position: relative; box-shadow: 0px 2px 8px rgb(0 0 0 / 15%); word-wrap: break-word; background-color: #fff; background-clip: border-box; border: 1px solid rgba(0, 0, 0, .125); margin-top: 18px; width: 360px; height: 100px; cursor: pointer; border-radius: 55px; } </style>'
+    );
+    var closeButton = '<svg xmlns="http://www.w3.org/2000/svg"><line x1="1" y1="11" x2="11" y2="1" stroke="#6c757d" stroke-width="2"></line><line x1="1" y1="1" x2="11" y2="11" stroke="#6c757d" stroke-width="2"></line></svg>';
+
+    $jq321(closeButton).insertAfter(".notifyjs-arrow");
+  }
   
+
   console.log(masterSelector);
   function stockCountdown(responseStock) {
     var selectorStock1 = $jq321("form[action='/cart/add']")
