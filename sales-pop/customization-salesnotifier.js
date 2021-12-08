@@ -1304,6 +1304,7 @@
          // TRUST BADGES CALL
          if (apiResponse && apiResponse.trustBadges && apiResponse.trustBadges != false) 
          {
+            
              $jq321("head").append($jq321("<link/>", {
                  rel: "stylesheet",
                  href: serverUrl.cssTrustBadges + "?v" + version
@@ -1738,11 +1739,15 @@
      });
  
     
- if (Shopify.shop == "lumenixco.myshopify.com") {
-    $jq321("head").append(
-      '<style type="text/css">.timer-store-front {margin-top:20px !important; margin-bottom: 0px !important} .product-area .product-detail__gap-lg, .product-area .store-availability-container-outer {padding-bottom: 0px !important}</style>'
-    );
-  }
+        if (Shopify.shop == "lumenixco.myshopify.com") {
+            $jq321("head").append(
+            '<style type="text/css">.timer-store-front {margin-top:20px !important; margin-bottom: 0px !important} .product-area .product-detail__gap-lg, .product-area .store-availability-container-outer {padding-bottom: 0px !important}</style>'
+            );
+        }        
+        
+       
+
+       
       function stockCountdown(responseStock) {
  
          var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
@@ -2236,6 +2241,9 @@
  // ---------------------------------- </PRODUCT QUICK VIEW FOR COLLECTION PAGE> --------------------------------
  
      // ---------------------------------- <TRUST BADGES MODULE> --------------------------------
+     
+     
+
      function trustBadges(trustBadgesResponse)
      {
          if (trustBadgesResponse.product_page_show_hide == 1)
@@ -2247,7 +2255,9 @@
             var selectorTrustBadges2 = $jq321("form[action='/cart/add']");
             var selectorTrustBadges3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
             var selectorTrustBadges4 = $jq321("form[action='/cart/add']:first");
-     
+            if (Shopify.shop == "chilloutart.myshopify.com") {
+                selectorTrustBadges1 = $jq321(".no-js-hidden");
+              }
             if (selectorTrustBadges1.length == 1)
             {
                 selectorTrustBadges1.append(trustBadgesResponse.view);
