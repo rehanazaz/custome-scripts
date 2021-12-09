@@ -1745,9 +1745,8 @@
             );
         }        
         
-       
+         
 
-       
       function stockCountdown(responseStock) {
  
          var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
@@ -1756,7 +1755,9 @@
          var selectorStock4 = $jq321("form[action='/cart/add']:first");
          var selectorStock5 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
          var selectorStock6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
- 
+         if (Shopify.shop == "coco-you.myshopify.com") {
+            selectorTimer1 = $jq321(".purchase-details");
+          } 
          if (responseStock.above_cart == 1) {
              if (selectorStock1.length == 1) {
                  selectorStock1.prepend(responseStock.view);
@@ -1850,7 +1851,9 @@
          var selectorTimer4 = $jq321("form[action='/cart/add']:first");
          var selectorTimer5 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
          var selectorTimer6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
- 
+        if (Shopify.shop == "coco-you.myshopify.com") {
+            selectorTimer1 = $jq321(".purchase-details");
+          }      
          if (responseTimer.above_cart == 1) {
              if (selectorTimer1.length == 1) {
                  selectorTimer1.prepend(responseTimer.view);
@@ -1896,7 +1899,9 @@
          var selectorVisitor2 = $jq321("form[action='/cart/add']");
          var selectorVisitor3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
          var selectorVisitor4 = $jq321("form[action='/cart/add']:first");
- 
+         if (Shopify.shop == "coco-you.myshopify.com") {
+            selectorTimer1 = $jq321(".purchase-details");
+          } 
          if (response.above_cart == 1) {
              if (selectorVisitor1.length == 1) {
                  selectorVisitor1.prepend(response.view);
@@ -1931,7 +1936,9 @@
          var selectorSold2 = $jq321("form[action='/cart/add']");
          var selectorSold3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
          var selectorSold4 = $jq321("form[action='/cart/add']:first");
- 
+         if (Shopify.shop == "coco-you.myshopify.com") {
+            selectorTimer1 = $jq321(".purchase-details");
+          } 
          if (response.above_cart == 1)
          {
              if (selectorSold1.length == 1)
@@ -2258,6 +2265,9 @@
             if (Shopify.shop == "chilloutart.myshopify.com") {
                 selectorTrustBadges1 = $jq321(".no-js-hidden");
               }
+            if (Shopify.shop == "coco-you.myshopify.com") {
+                selectorTimer1 = $jq321(".purchase-details");
+            } 
             if (selectorTrustBadges1.length == 1)
             {
                 selectorTrustBadges1.append(trustBadgesResponse.view);

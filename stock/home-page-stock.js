@@ -9,7 +9,7 @@
  * In case of any inquiries, please contact here: https://carecart.io/contact-us/
  */
 
-function scriptInjection(src, callback) {
+ function scriptInjection(src, callback) {
     var script = document.createElement('script');
     script.type = "text/javascript";
 
@@ -36,8 +36,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         var thisLibUrl = "";
         allScripts.forEach(function (script) {
-            if (script.src && script.src.indexOf('lib/stockcountdown') !== -1) {
-                thisLibUrl = script.src;
+            if (script.src && script.src.indexOf('lib/custom-location-stock.js') !== -1) {
+                thisLibUrl = "";console.log("hella");
             }
         });
 
@@ -66,6 +66,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     }
 
     var serverUrl = getServerUrls();
+    var app_url ="https://app-countdown-pro.carecart.io/"
 
     // @todo cleanup unused extra properties
     var salespoplib_vars_obj = {
@@ -98,18 +99,22 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     };
 
 /* Hard coded product id's for home page */
-let productID = 0;
-if(Shopify.shop == "next-level-paramount-deals.myshopify.com"){
-    productID = 7067725594823;
-}
+    let productID = 0;
+    if(Shopify.shop == "next-level-paramount-deals.myshopify.com"){
+        productID = 7067725594823;
+    }
 
-if(Shopify.shop == "blissin-skin.myshopify.com"){
-    productID = 6939770716332;
-}
+    if(Shopify.shop == "blissin-skin.myshopify.com"){
+        productID = 6939770716332;
+    }
 
-if(Shopify.shop == "shapely-former.myshopify.com"){
-    productID = 7430447038714;
-}
+    if(Shopify.shop == "shapely-former.myshopify.com"){
+        productID = 7430447038714;
+    }
+
+    if(Shopify.shop == "cian-o-regan-photography.myshopify.com"){
+        productID = 6640241737859;
+    }
 
     $jq321.ajax({
         type: "GET",
@@ -133,6 +138,36 @@ if(Shopify.shop == "shapely-former.myshopify.com"){
         complete: function () {
         }
     });
+    
+    let customSelector = '';
+    let finalSelector = '';
+    if(Shopify.shop == "grandcruvinhos-teste.myshopify.com"){
+    	customSelector = $jq321(".new-buy");
+    	finalSelector = customSelector[6];
+    }
+    if(Shopify.shop == "updateshop24.myshopify.com"){
+    	$jq321(".add-to-cart-loader").remove();
+    }
+    if(Shopify.shop == "opar-off-road.myshopify.com"){
+    	$jq321("head").append('<style type="text/css">.stock-message{font-size:14px !important}</style>');
+    }
+    if(Shopify.shop == "sweatbuffy.myshopify.com"){
+    	customSelector = $jq321(".addCart");
+    	finalSelector = customSelector[0];
+    }
+    if(Shopify.shop == "wynd-technologies-inc.myshopify.com"){
+    	customSelector = $jq321(".form__column");
+    	finalSelector = customSelector[1];
+    }
+    if(Shopify.shop == "sheopal-s.myshopify.com"){
+    	customSelector = $jq321(".paymentButtonsWrapper");
+    	finalSelector = customSelector[0];
+    }
+    if(Shopify.shop == "cian-o-regan-photography.myshopify.com"){
+    	customSelector = $jq321(".grid-view-item__title");
+    	finalSelector = customSelector[0];
+    }
+    
 
      function stockCountdown(response) {
          
@@ -145,7 +180,10 @@ if(Shopify.shop == "shapely-former.myshopify.com"){
 
         if (response.above_cart == 1)
         {
-            if (selectorStock1.length == 1)
+            if(customSelector.length > 0){
+            	$jq321(response.view).insertBefore(finalSelector);
+            }
+            else if (selectorStock1.length == 1)
             {
                 selectorStock1.prepend(response.view);
             }
@@ -172,7 +210,10 @@ if(Shopify.shop == "shapely-former.myshopify.com"){
         }
         else
         {
-            if (selectorStock1.length == 1)
+            if(customSelector.length > 0){
+            	$jq321(response.view).insertAfter(finalSelector);
+            }
+            else if (selectorStock1.length == 1)
             {
                 selectorStock1.append(response.view);
             }
@@ -214,7 +255,10 @@ if(Shopify.shop == "shapely-former.myshopify.com"){
 
         if (t.above_cart == 1)
         {
-            if (selectorTimer1.length == 1)
+            if(customSelector.length > 0){
+            	$jq321(t.view).insertBefore(finalSelector);
+            }
+            else if (selectorTimer1.length == 1)
             {
                 selectorTimer1.prepend(t.view);
             }
@@ -241,7 +285,10 @@ if(Shopify.shop == "shapely-former.myshopify.com"){
         }
         else
         {
-            if (selectorTimer1.length == 1)
+            if(customSelector.length > 0){
+            	$jq321(t.view).insertAfter(finalSelector);
+            }
+            else if (selectorTimer1.length == 1)
             {
                 selectorTimer1.append(t.view);
             }
