@@ -1538,6 +1538,9 @@ productID = 6816654065873;
 if(Shopify.shop == "concept-baby.myshopify.com"){
 productID = 6978411298991;
 }
+if(Shopify.shop == "techhouse2-0.myshopify.com"){
+productID = 6669180240004;
+}
     $jq321.ajax({
         type: "GET",
         url: salespoplib_vars_obj.backend_url + 'checkStore/',
