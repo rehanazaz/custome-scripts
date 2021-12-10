@@ -1242,6 +1242,9 @@
                                 carecartSpinnerJquery(".site-nav").append('<li><a id="wheelify-spin-trigger-2" onclick="displaySpinnerOnTigger()" href="javascript:void(0)" class="site-nav__link site-nav__link--main"><span class="site-nav__label">Spin to Win</span></a></li>');
                                 carecartSpinnerJquery("#wheelify-spin-trigger-cc").css("display", "none");
                             }
+                            if ("ll4ustore.myshopify.com" == Shopify.shop) {
+                                carecartSpinnerJquery("body").append('<style type="text/css">#cc-spin-a-sale-consent-text{display:flex !important; padding-left:14px !important} .checkbox label  input[type=checkbox]#cc-spin-a-sale-consent-checkbox, .checkbox label  input[type=radio]#cc-spin-a-sale-consent-checkbox{width:auto;height:auto;opacity:1!important;clip:rect(1 0 0 0) !important;z-index:1;}.checkbox input[type=checkbox], .checkbox input[type=radio]{clip:auto !important;}.checkbox label::after{display:none;}</style>');
+                            }
 
 
                             //****************************************** End - Allow Spinner on ONLY Specific URL ******************************
