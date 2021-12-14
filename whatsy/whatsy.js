@@ -7,7 +7,7 @@
  * Any unauthorized use and distribution of this and related files, is strictly forbidden.
  * In case of any inquiries, please contact here: https://carecart.io/contact-us/
  */
-
+//
  function scriptInjection(src, callback) {
 	let script = document.createElement('script');
 	script.type = "text/javascript";
